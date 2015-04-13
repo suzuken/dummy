@@ -16,6 +16,10 @@ fixed length data generator.
 	fhm,uyrftbncje,4653678144,qad
 	okd,wchmixiuep,5811492732,eyt
 
+## how to use
+
+see Makefile
+
 ## LICENSE
 
 MIT
