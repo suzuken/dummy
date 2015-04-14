@@ -1,3 +1,14 @@
+// dummy is dummy data generator. This package provide the dummy data in specified format.
+// 
+// The format in dummy is simple. If you want to generate 10 letter string, format is as below:
+//
+//     str|10
+//
+// Also, this support separated value.
+//
+//     str|5,str|10,int|5
+//
+// This create 5 letter string, 10 letter string and 5 letter integers in comma separated format.
 package dummy
 
 import (
@@ -46,7 +57,7 @@ func (g *Generator) Gen(format string, len int) (string, error) {
 	return s, nil
 }
 
-// Generate each line
+// Generate each line. You can use dummy format for generate line.
 func (g *Generator) GenLine(format string) string {
 	ret := make([]string, 0)
 	for _, f := range parseFormat(format) {
@@ -81,10 +92,12 @@ func (g *Generator) GenRune(r []rune, n int) string {
 	return string(b)
 }
 
+// Generate random string in particular length.
 func (g *Generator) String(n int) string {
 	return g.GenRune(letters, n)
 }
 
+// Generate random integer in particular length.
 func (g *Generator) Int(n int) string {
 	return g.GenRune(numbers, n)
 }
