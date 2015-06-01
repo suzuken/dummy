@@ -19,4 +19,4 @@ ci:
 	git commit
 
 csv:
-	go run cmd/dummy/dummy.go -f "string|10,string|10"
+	go run cmd/dummy/dummy.go -f "str|10,str|10"

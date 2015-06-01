@@ -4,7 +4,7 @@ fixed length data generator.
 
 ## example
 
-	$ dummy -f "str|3,str|10,int|10,str|3"
+	$ dummy -f "str|3,str|10,int|10,str|3" -l 10
 	ieg,moogqrndhc,1998033786,txx
 	khb,gavvmmqhww,6078679858,ydi
 	qkp,emllyqsdcd,5436849630,pfl
