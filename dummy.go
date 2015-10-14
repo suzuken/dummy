@@ -12,7 +12,6 @@
 package dummy
 
 import (
-	"errors"
 	"math/rand"
 	"regexp"
 	"strconv"
@@ -43,18 +42,6 @@ func IsProperFormat(format string) bool {
 	r := regexp.MustCompile(`(str|int)\|[0-9]+`)
 	s := r.FindAllString(format, -1)
 	return len(s) > 0
-}
-
-// Generate separated string in the specified format and line length.
-func (g *Generator) Gen(format string, len int, separator string) (string, error) {
-	if !IsProperFormat(format) {
-		return "", errors.New("provided format is not proper")
-	}
-	var s string
-	for i := 0; i < len; i++ {
-		s = s + g.GenLine(format, separator) + "\n"
-	}
-	return s, nil
 }
 
 // Generate each line. You can use dummy format for generate line.

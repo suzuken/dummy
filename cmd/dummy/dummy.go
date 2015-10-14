@@ -30,11 +30,14 @@ func main() {
 	}
 	app.Action = func(c *cli.Context) {
 		g := dummy.NewGenerator()
-		s, err := g.Gen(c.String("format"), c.Int("length"), c.String("separator"))
-		if err != nil {
-			fmt.Printf("[ERR] %s", err)
+		if !dummy.IsProperFormat(c.String("format")) {
+			fmt.Fprint(os.Stderr, "provided format is invalid.")
+			os.Exit(1)
+			return
 		}
-		fmt.Print(s)
+		for i := 0; i < c.Int("length"); i++ {
+			fmt.Println(g.GenLine(c.String("format"), c.String("separator")))
+		}
 		return
 	}
 	app.Run(os.Args)
