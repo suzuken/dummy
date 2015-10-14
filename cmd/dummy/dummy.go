@@ -11,21 +11,26 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "dummy"
 	app.Usage = "make a dummy data"
-	app.Flags = []cli.Flag {
+	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name: "format, f",
+			Name:  "format, f",
 			Value: "string|10",
 			Usage: "generate data type: like 'str|10,int|5,str|3'",
 		},
 		cli.IntFlag{
-			Name: "length, l",
+			Name:  "length, l",
 			Value: 1,
 			Usage: "data record length",
+		},
+		cli.StringFlag{
+			Name:  "separator, s",
+			Value: ",",
+			Usage: "field separator",
 		},
 	}
 	app.Action = func(c *cli.Context) {
 		g := dummy.NewGenerator()
-		s, err := g.Gen(c.String("format"), c.Int("length"))
+		s, err := g.Gen(c.String("format"), c.Int("length"), c.String("separator"))
 		if err != nil {
 			fmt.Printf("[ERR] %s", err)
 		}

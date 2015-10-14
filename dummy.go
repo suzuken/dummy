@@ -1,5 +1,5 @@
 // dummy is dummy data generator. This package provide the dummy data in specified format.
-// 
+//
 // The format in dummy is simple. If you want to generate 10 letter string, format is as below:
 //
 //     str|10
@@ -46,19 +46,19 @@ func IsProperFormat(format string) bool {
 }
 
 // Generate separated string in the specified format and line length.
-func (g *Generator) Gen(format string, len int) (string, error) {
+func (g *Generator) Gen(format string, len int, separator string) (string, error) {
 	if !IsProperFormat(format) {
 		return "", errors.New("provided format is not proper")
 	}
 	var s string
 	for i := 0; i < len; i++ {
-		s = s + g.GenLine(format) + "\n"
+		s = s + g.GenLine(format, separator) + "\n"
 	}
 	return s, nil
 }
 
 // Generate each line. You can use dummy format for generate line.
-func (g *Generator) GenLine(format string) string {
+func (g *Generator) GenLine(format, separator string) string {
 	ret := make([]string, 0)
 	for _, f := range parseFormat(format) {
 		k, v := parseFieldKV(f)
@@ -69,7 +69,7 @@ func (g *Generator) GenLine(format string) string {
 			ret = append(ret, g.Int(v))
 		}
 	}
-	return strings.Join(ret, ",")
+	return strings.Join(ret, separator)
 }
 
 func parseFieldKV(field string) (k string, v int) {

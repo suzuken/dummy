@@ -28,7 +28,7 @@ func TestCheckLengthString(t *testing.T) {
 
 func TestGenLine(t *testing.T) {
 	f := "str|3,str|10,int|10,str|3"
-	s := g.GenLine(f)
+	s := g.GenLine(f, ",")
 	ss := strings.Split(s, ",")
 	if len(ss) != 4 {
 		t.Fatalf("generate string is failed, length is wrong %v %v", f, ss)

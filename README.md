@@ -2,6 +2,10 @@
 
 fixed length data generator.
 
+## installation
+
+	go get github.com/suzuken/dummy/...
+
 ## example
 
 	$ dummy -f "str|3,str|10,int|10,str|3" -l 10
@@ -23,3 +27,7 @@ see Makefile
 ## LICENSE
 
 MIT
+
+## Author
+
+Kenta Suzuki
